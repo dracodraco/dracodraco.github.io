@@ -46,15 +46,16 @@
     }, 300);
 
     // Initialize and Configure Magnific Popup Lightbox Plugin
-    $('.popup-gallery').magnificPopup({
+    if ($('.popup-gallery').length > 0) {
+      $('.popup-gallery').magnificPopup({
         delegate: 'a',
         type: 'image',
         tLoading: 'Loading image #%curr%...',
         mainClass: 'mfp-img-mobile',
         gallery: {
-            enabled: true,
-            navigateByImgClick: true,
-            preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+          enabled: true,
+          navigateByImgClick: true,
+          preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
         },
         image: {
           tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
@@ -62,6 +63,7 @@
             return (item.el.attr('title') !== undefined) ? '<a href=' + item.el.attr('title') + ' target="_blank">Link to project</a>' : null;
           }
         }
-    });
+      });
+    }
 
 })(jQuery); // End of use strict
