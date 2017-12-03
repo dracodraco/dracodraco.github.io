@@ -71,6 +71,26 @@
     </nav>
 
     <header>
+      <canvas class="scene scene--full" id="scene"></canvas>
+      <script type="x-shader/x-vertex" id="wrapVertexShader">
+        #define PI 3.1415926535897932384626433832795
+        attribute float size;
+        void main() {
+          vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+          gl_PointSize = 3.0;
+          gl_Position = projectionMatrix * mvPosition;
+        }
+      </script>
+      <script type="x-shader/x-fragment" id="wrapFragmentShader">
+        uniform sampler2D texture;
+        void main(){
+          vec4 textureColor = texture2D( texture, gl_PointCoord );
+          if ( textureColor.a < 0.3 ) discard;
+          vec4 dotColor = vec4(0.06, 0.18, 0.36, 0.4);
+          vec4 color = dotColor * textureColor;
+          gl_FragColor = color;
+        }
+      </script>
         <div class="header-content">
             <div class="header-content-inner">
                 <h1 id="homeHeading">Creative designer</h1>
@@ -81,7 +101,7 @@
         </div>
     </header>
 
-    <section class="bg-primary" id="about">
+    <section class="bg-dark" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -302,6 +322,8 @@
     <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <!-- Theme JavaScript -->
+    <script src="js/three.js"></script>
+    <script src="js/TweenMax.min.js"></script>
     <script src="js/creative.min.js"></script>
 
 </body>

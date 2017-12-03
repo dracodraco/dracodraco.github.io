@@ -166,7 +166,6 @@ header {
     min-height: auto;
     .background-cover;
     background-position: center;
-    background-image: url('../img/header.jpg');
     text-align: center;
     color: white;
     .header-content {
@@ -318,12 +317,15 @@ header {
 }
 
 .btn-primary {
-    .button-variant(white;@theme-primary;@theme-primary);
+    .button-variant(white;@theme-primary;white);
+}
+
+.btn-primary:hover {
+  border: none;
 }
 
 .btn {
     .sans-serif-font;
-    border: none;
     border-radius: 300px;
     font-weight: 700;
     text-transform: uppercase;
