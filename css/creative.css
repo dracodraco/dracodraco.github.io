@@ -1,6 +1,6 @@
 /*!
  * Start Bootstrap - Creative v3.3.7+1 (http://startbootstrap.com/template-overviews/creative)
- * Copyright 2013-2017 Start Bootstrap
+ * Copyright 2013-2018 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 .project {
@@ -207,6 +207,12 @@
   max-width: 200px;
   margin: 10px auto;
 }
+#scene[aria-hidden="true"] {
+  display: none;
+}
+#scene {
+  min-width: 100%;
+}
 html,
 body {
   height: 100%;
@@ -359,6 +365,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
   background-position: center;
+  background-image: url(../img/header.jpg);
   text-align: center;
   color: white;
 }
