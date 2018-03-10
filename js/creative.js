@@ -75,15 +75,15 @@ var isMobile = function() {
   return check;
 };
 
-var runDots = false;
-if (!isMobile || window.outerWidth > '790') {
+var shouldRunDots = !isMobile || window.outerWidth > '790' && window.location.pathname === '/';
+if (shouldRunDots) {
   startWebGL(canvas);
-  runDots = true;
 }
 
 var positions, bufferDotsGeom, dotTexture, scene, renderer, camera, dots;
 
 function startWebGL(canvas) {
+  debugger
   var width = window.outerWidth,
       height = window.outerHeight;
 
@@ -171,19 +171,21 @@ function onMouseMove(e) {
     });
 }
 
-if (window.outerWidth > '790') {
+if (window.outerWidth > '790' && shouldRunDots) {
   TweenMax.ticker.addEventListener("tick", render);
   window.addEventListener("mousemove", onMouseMove);
 }
 
 window.addEventListener("resize", function() {
-  if (window.outerWidth < '790') {
-    TweenMax.ticker.removeEventListener("tick", render);
-    window.removeEventListener("mousemove", onMouseMove);
-    canvas.setAttribute('aria-hidden', true);
-  } else {
+  if (window.outerWidth > '790' && shouldRunDots) {
     canvas.setAttribute('aria-hidden', false);
     TweenMax.ticker.addEventListener("tick", render);
     window.addEventListener("mousemove", onMouseMove);
+  } else {
+      if (shouldRunDots) {
+        TweenMax.ticker.removeEventListener("tick", render);
+        window.removeEventListener("mousemove", onMouseMove);
+        canvas.setAttribute('aria-hidden', true);
+      }
   }
 })
