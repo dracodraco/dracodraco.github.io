@@ -208,7 +208,8 @@
   margin: 10px auto;
 }
 @media (max-width: 768px) {
-  .project-pigeon-header {
+  .project-pigeon-header,
+  .project-header {
     display: block;
   }
   .project-pigeon-titles {
@@ -226,12 +227,28 @@
     position: static;
     max-width: 100%;
   }
+  .project-process img {
+    max-width: 100%;
+  }
+  .result-phone {
+    display: none;
+  }
+  .result-screen {
+    position: static;
+    opacity: 1;
+    margin-left: 0;
+  }
 }
 #scene[aria-hidden="true"] {
   display: none;
 }
 #scene {
   min-width: 100%;
+}
+@media (max-width: 768px) {
+  #scene {
+    display: none;
+  }
 }
 html,
 body {
