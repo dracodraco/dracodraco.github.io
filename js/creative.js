@@ -75,7 +75,7 @@ var isMobile = function() {
   return check;
 };
 
-var shouldRunDots = !isMobile || window.outerWidth > '790' && window.location.pathname === '/';
+var shouldRunDots = !isMobile || window.outerWidth > '790' && (window.location.pathname === '/' || window.location.pathname === '/index.html');
 if (shouldRunDots) {
   startWebGL(canvas);
 }
